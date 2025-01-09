@@ -18,6 +18,7 @@ class Solution {
 
            
 ## Problem2 Jump Game II (https://leetcode.com/problems/jump-game-ii/)
+## Time Complexity:O(n2) Space:O(N)
 class Solution {
     HashMap<Integer,Integer> memoMap;
     public int jump(int[] nums) {
