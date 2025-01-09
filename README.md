@@ -18,7 +18,37 @@ class Solution {
 
            
 ## Problem2 Jump Game II (https://leetcode.com/problems/jump-game-ii/)
+class Solution {
+    HashMap<Integer,Integer> memoMap;
+    public int jump(int[] nums) {
+        int n=nums.length;
+        this.memoMap=new HashMap<>();
+        if(n==1) return 0;
+        return dfs(nums,0);
+    }
 
+
+    private int dfs(int[] nums,int currIdx)
+    {
+        if(currIdx>=nums.length-1)
+        {
+            return 0;
+        }
+
+        if(memoMap.containsKey(currIdx)) return memoMap.get(currIdx);
+
+        int min=99999;
+        for(int k=1;k<=nums[currIdx];k++)
+        {
+            int newIdx=currIdx+k;
+            min=Math.min(min,1+dfs(nums,newIdx));
+        }
+        memoMap.put(currIdx,min);
+        return min;
+
+
+    }
+}
 
 ## Problem3 Candy (https://leetcode.com/problems/candy/)
 ## Time Complexity:O(N) Space:O(1)
